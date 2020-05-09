@@ -24,6 +24,7 @@
 
 \usepackage{hyperref}
 \usepackage{fancybox}
+\usepackage{p4bwcl}
 
 \begin{document}
 
@@ -33,7 +34,7 @@
 
 \tableofcontents
 
-\section{Prerequisite - การเริ่มต้น}
+\section{การเริ่มต้น}
 
 การเขียนโปรแกรม คือ การเขียนชุดคำสั่ง เพื่อสั่งให้คอมพิวเตอร์ทำงานตามที่เรากำหนด
 
@@ -68,11 +69,79 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 เป็นที่ยอมรับกันโดยทั่วไปว่าในชีวิตหนึ่งๆของคนเรา เราย่อมต้องเรียนภาษาคอมพิวเตอร์หลายภาษา
 แล้วทำไมไม่ลองเริ่มด้วยภาษา Common Lisp กันเล่า!
 
-\shadowbox{\begin{minipage}{0.9\linewidth}
-{\Large รู้หรือไม่?}
-ภาษา Logo (เจ้าเต่าน้อย Logo) ที่หลายๆท่านอาจได้เคยเรียนในสมัยเด็กๆเป็น
-Dialect หนึ่งของภาษา Lisp นี่ก็ยิ่งชี้ให้เห็นว่า Common Lisp
-เหมาะกับการเป็นภาษาเขียนโปรแกรมแรกๆของทุกท่านขนาดไหน
-\end{minipage}}
+\doyouknow{
+  ภาษา Logo (เจ้าเต่าน้อย Logo) ที่หลายๆท่านอาจได้เคยเรียนในสมัยเด็กๆเป็น
+  Dialect หนึ่งของภาษา Lisp นี่ก็ยิ่งชี้ให้เห็นว่า Common Lisp
+  เหมาะกับการเป็นภาษาเขียนโปรแกรมแรกๆของทุกท่านขนาดไหน
+}
+
+\section{Common Lisp Package, ASDF, System และ Quicklisp}
+
+เรื่อง Package, ASDF, System และ Quicklisp
+เป็นเรื่องหนึ่งที่ผู้เขียนมีความสับสนมากในช่วงเริ่มแรกของการเรียนภาษา Common Lisp
+
+ความยืดหยุ่นที่มากเกินไป กับ Documentation ที่ไม่ดีนัก
+ก็ทำให้เกิดผลเสียต่อความนิยมของภาษาคอมฯหนึ่งๆได้
+
+เรื่องนี้เกี่ยวกับระบบ Software Library หรือ Software Package ใน Common Lisp
+
+สำหรับมือใหม่ ให้ลองทำตามนี้ก่อน จะได้ไม่สับสน แล้วเมื่อเชี่ยวชาญแล้วค่อยปรับแต่งตามใจชอบ
+
+เวลาเราจะเปิด Project ใหม่ สมมุติว่าชื่อ hello-world ให้เราไปที่ Directory ชื่อ
+{~/common-lisp/} แล้วสร้าง directory ชื่อ hello-world/ ขึ้นมา ซึ่งจะเป็นที่ๆเราจะใส่
+Source Code ของเราในนั้น
+
+ต่อมาเรามี Project ใหม่ สมมุติว่าชื่อ goodbye-universe เราก็สร้าง Directory ชื่อ
+~/common-lisp/goodbye-universe/ แล้วใส่ Source Code ของ Project นี้ไปในนั้น
+
+สมมุติว่าเรามี Function ใน Project ชื่อ hello-world ที่สามารถนำมาใช้ใน Project ชื่อ
+goodbye-universe ด้วย ทางหนึ่งที่ทำได้คือ Copy \& Paste Source Code ของ Function
+นั้นมาด้วย แต่วิธีนี้ไม่ Cool เท่าไหร่
+
+วิธีที่ Cool กว่าคือ เอา Function นั้นไปทำเป็น Package แล้วให้ Project ชื่อ
+hello-world และ goodbye-universe เรียกใช้ร่วมกัน
+
+พอเรามี Source Code เยอะๆ เริ่มมีการใช้งาน Source Code ชุดเดิมซ้ำๆกันในหลายๆ
+Project เราก็เลยเอา Source Code ชุดต่างๆมาจัดกลุ่ม ใส่เข้าไปอยูในแต่ละ Package
+
+เมื่อเราจัดเอา Source Code ชุดต่างๆใส่เข้าไปแต่ละ Package แล้ว
+เราก็ต้องมาคิดต่อว่าจะทำอย่างไรให้ Project อื่นๆ 
+
+\section{การติดตั้งระบบเพื่อเริ่มเขียนโปรแกรมด้วยภาษา Common Lisp}
+
+Common Lisp มีหลาย Implementation เราเลือกใช้ Sbcl ซึ่งเป็น Common Lisp Implementation ที่ได้รับความนิยมที่สุด
+
+ผู้เขียนใช้ Debian 10 เป็น Operating System
+
+ทำการติดตั้ง Sbcl, Quicklisp และ un-utils บนคอมฯของท่านโดยทำตามขั้นตอนในลิงค์นี้:
+\href{https://github.com/unsigned-nerd/un-utils}{https://github.com/unsigned-nerd/un-utils}
+
+Sbcl
+
+ดังได้กล่าวไปก่อนหน้านี้ Sbcl เป็น Implementation หนึ่งของ Common Lisp
+
+เป็นโปรแกรมที่ใช้คอมไพล์และรันโปรแกรมที่เราเขียนขึ้นด้วยภาษา Common Lisp
+
+Quicklisp
+
+Quicklisp เป็นโปรแกรมเชิงระบบที่นิยมใช้ในการติดตั้ง Systems ต่างๆจากผู้พัฒนาคนอื่น
+
+System ใน Common Lisp ก็คือ Library ต่างๆที่เราเรียกกันในภาษาอื่นนั่นเอง
+
+โดยทั่วไป ให้เราคิดเสียว่า หากเราต้องการดาวน์โหลด System ของคนอื่นมาใช้
+โดยคิดว่าจะใช้อย่างเดียว ไม่ได้ต้องการจะแก้ไขอะไรมัน ก็ควรจะใช้ Quicklisp
+ในการดาวน์โหลดและติดตั้ง
+
+แต่ถ้าเราต้องการเขียน System เอง หรือ ต้องการแก้ไข System ของผู้อื่น ก็ให้ใช้เครื่องมือชื่อ
+ASDF ในการจัดการ
+
+ASDF เป็นเครื่องมือที่ใช้ในการจัดการ
+
+un-utils
+
+un-utils เป็น Common Lisp System ที่ทางผู้เขียนพัฒนาขึ้นมา ซึ่งมี Package ที่น่าสนใจชื่อ
+un-utils.simple-syntax
+
+un-utils.simple-syntax นี้จะ
 
 \end{document}
