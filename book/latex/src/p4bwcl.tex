@@ -9,12 +9,6 @@
 \setdefaultlanguage{thai}
 \setotherlanguage{english}
 \newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{Norasi:script=thai}
-%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{TlwgTypewriter:script=thai}
-%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{TlwgTypewriter}
-% if omitting script=thai, then we don't have to use ItalicFont,
-% BoldFont, BoldItalicFont options
-%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-tex,ItalicFont={TlwgTypewriter-Oblique},BoldFont={TlwgTypewriter-Bold},BoldItalicFont={TlwgTypewriter-BoldOblique}]{TlwgTypewriter:script=thai}
-%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{Purisa:script=thai}
 \setTransitionTo{Thai}{\thaifont}
 \setTransitionFrom{Thai}{\normalfont}
 \XeTeXlinebreaklocale “th_TH” 
@@ -22,9 +16,40 @@
 \linespread{1.5}
 % }}} [end] thai language support
 
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{fancybox}
 \usepackage{p4bwcl}
+
+\usepackage{url}
+\renewcommand\UrlFont{\thaifont\itshape}
+
+\usepackage{listings}
+% {{{
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\lstset{numbers=left,numberstyle=\tiny,numbersep=5pt,language=Lisp,
+  stringstyle=\small,basicstyle=\footnotesize,
+  showstringspaces=false,breaklines}
+% }}}
 
 \begin{document}
 
@@ -88,7 +113,7 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 สำหรับมือใหม่ ให้ลองทำตามนี้ก่อน จะได้ไม่สับสน แล้วเมื่อเชี่ยวชาญแล้วค่อยปรับแต่งตามใจชอบ
 
 เวลาเราจะเปิด Project ใหม่ สมมุติว่าชื่อ hello-world ให้เราไปที่ Directory ชื่อ
-{~/common-lisp/} แล้วสร้าง directory ชื่อ hello-world/ ขึ้นมา ซึ่งจะเป็นที่ๆเราจะใส่
+\url{~/common-lisp/} แล้วสร้าง directory ชื่อ \url{hello-world/} ขึ้นมา ซึ่งจะเป็นที่ๆเราจะใส่
 Source Code ของเราในนั้น
 
 ต่อมาเรามี Project ใหม่ สมมุติว่าชื่อ goodbye-universe เราก็สร้าง Directory ชื่อ
@@ -143,5 +168,25 @@ un-utils เป็น Common Lisp System ที่ทางผู้เขีย
 un-utils.simple-syntax
 
 un-utils.simple-syntax นี้จะ
+
+\lstset{language=Java}
+\begin{lstlisting}
+// Hello.java
+import javax.swing.JApplet;
+import java.awt.Graphics;
+
+public class Hello extends JApplet {
+    public void paintComponent(Graphics g) {
+        g.drawString("Hello, world!", 65, 95);
+    }    
+}
+\end{lstlisting}
+
+\lstset{language=Lisp}
+\begin{lstlisting}
+; comment
+(setf a 'a)
+\end{lstlisting}
+
 
 \end{document}
