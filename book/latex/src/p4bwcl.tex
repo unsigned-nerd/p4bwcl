@@ -51,6 +51,8 @@
   showstringspaces=false,breaklines}
 % }}}
 
+\usepackage{xcolor,graphicx}
+
 \begin{document}
 
 \title{Programming For Beginners With Common~Lisp}
@@ -61,7 +63,7 @@
 
 \section{การเริ่มต้น}
 
-การเขียนโปรแกรม คือ การเขียนชุดคำสั่ง เพื่อสั่งให้คอมพิวเตอร์ทำงานตามที่เรากำหนด
+การเขียนโปรแกรม คือ การเขียนชุดคำสั่งเพื่อสั่งให้คอมพิวเตอร์ทำงานตามที่เรากำหนด
 
 เราเขียนชุดคำสั่งด้วย Programming Language
 
@@ -73,16 +75,15 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 
 สามารถดูการจัดอันดับภาษาคอมฯที่ได้รับความนิยมล่าสุดได้ที่นี่: \href{http://pypl.github.io/PYPL.html}{http://pypl.github.io/PYPL.html}
 
-อันดับหนึ่งคือภาษา Python
-
-ส่วนภาษา Common Lisp ไม่ติดอันดับบน PYPL เลย
+อันดับหนึ่งคือภาษา Python ส่วนภาษา Common Lisp ไม่ติดอันดับบน PYPL เลย
 
 ทาง PYPL แนะนำว่าถ้าหากอยากทราบความนิยมของภาษาที่ไม่ติดอันดับให้ใช้ Google Trends ดู
 
 เมื่อลองใช้ Google Trends เปรียบเทียบความนิยมระหว่าง 3 ภาษา ได้แก่ Python, PHP
 และ Common Lisp เราจะพบว่ากระแสความนิยมในภาษา Common Lisp นั้นต่ำมาก
-ดังจะเห็นได้จากภาพประกอบด้านล่าง
+ดังจะเห็นได้จากภาพประกอบด้านล่าง:
 
+\includegraphics[width=\linewidth]{images/lang-popularity.png} \\
 
 อย่างไรก็ตาม แม้ว่า Common Lisp จะไม่ได้รับความนิยมในปัจจุบัน
 แต่ก็ไม่ได้หมายความว่ามันจะไม่เหมาะกับการใช้เป็นเครื่องมือในการเรียนรู้การเขียนโปรแกรม%
@@ -91,8 +92,8 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 เมื่อท่านได้เรียนรู้การเขียนโปรแกรมด้วยภาษา Common Lisp แล้ว ท่านจะสามารถเรียนภาษา%
 คอมฯอื่นๆเพิ่มเติมได้ง่ายขึ้นมาก
 
-เป็นที่ยอมรับกันโดยทั่วไปว่าในชีวิตหนึ่งๆของคนเรา เราย่อมต้องเรียนภาษาคอมพิวเตอร์หลายภาษา
-แล้วทำไมไม่ลองเริ่มด้วยภาษา Common Lisp กันเล่า!
+เป็นที่ยอมรับกันโดยทั่วไปว่าในชีวิตหนึ่งๆของคนเรา เราย่อมต้องเรียนภาษาคอมพิวเตอร์หลาย%
+ภาษากันอยู่แล้ว แล้วทำไมจึงไม่ลองเรียนภาษา Common Lisp กันเล่า!
 
 \doyouknow{
   ภาษา Logo (เจ้าเต่าน้อย Logo) ที่หลายๆท่านอาจได้เคยเรียนในสมัยเด็กๆเป็น
@@ -103,7 +104,7 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 \section{Common Lisp Package, ASDF, System และ Quicklisp}
 
 เรื่อง Package, ASDF, System และ Quicklisp
-เป็นเรื่องหนึ่งที่ผู้เขียนมีความสับสนมากในช่วงเริ่มแรกของการเรียนภาษา Common Lisp
+เป็นเรื่องหนึ่งที่ผู้เขียนมีความสับสนมากในช่วงเริ่มต้นของการเรียนภาษา Common Lisp
 
 ความยืดหยุ่นที่มากเกินไป กับ Documentation ที่ไม่ดีนัก
 ก็ทำให้เกิดผลเสียต่อความนิยมของภาษาคอมฯหนึ่งๆได้
@@ -113,24 +114,30 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 สำหรับมือใหม่ ให้ลองทำตามนี้ก่อน จะได้ไม่สับสน แล้วเมื่อเชี่ยวชาญแล้วค่อยปรับแต่งตามใจชอบ
 
 เวลาเราจะเปิด Project ใหม่ สมมุติว่าชื่อ hello-world ให้เราไปที่ Directory ชื่อ
-\url{~/common-lisp/} แล้วสร้าง directory ชื่อ \url{hello-world/} ขึ้นมา ซึ่งจะเป็นที่ๆเราจะใส่
-Source Code ของเราในนั้น
+\url{~/common-lisp/} แล้วสร้าง directory ชื่อ \url{hello-world/} ขึ้นมา
+ซึ่งจะเป็นที่ๆเราจะใส่ Source Code ของเราในนั้น
 
 ต่อมาเรามี Project ใหม่ สมมุติว่าชื่อ goodbye-universe เราก็สร้าง Directory ชื่อ
-~/common-lisp/goodbye-universe/ แล้วใส่ Source Code ของ Project นี้ไปในนั้น
+\url{~/common-lisp/goodbye-universe/} แล้วใส่ Source Code ของ Project
+นี้ไปในนั้น
 
 สมมุติว่าเรามี Function ใน Project ชื่อ hello-world ที่สามารถนำมาใช้ใน Project ชื่อ
-goodbye-universe ด้วย ทางหนึ่งที่ทำได้คือ Copy \& Paste Source Code ของ Function
-นั้นมาด้วย แต่วิธีนี้ไม่ Cool เท่าไหร่
+goodbye-universe ด้วย ทางหนึ่งที่ทำได้คือ Copy \& Paste Source Code ของ
+Function นั้นมาใส่ แต่วิธีนี้ไม่ดี
 
-วิธีที่ Cool กว่าคือ เอา Function นั้นไปทำเป็น Package แล้วให้ Project ชื่อ
-hello-world และ goodbye-universe เรียกใช้ร่วมกัน
+วิธีที่ดีกว่าคือ เอา Function นั้นไปสร้างเป็น Package แล้วให้ Project ชื่อ
+hello-world และ goodbye-universe เรียกใช้ Function นั้นร่วมกันผ่านระบบ Package
 
-พอเรามี Source Code เยอะๆ เริ่มมีการใช้งาน Source Code ชุดเดิมซ้ำๆกันในหลายๆ
-Project เราก็เลยเอา Source Code ชุดต่างๆมาจัดกลุ่ม ใส่เข้าไปอยูในแต่ละ Package
+เมื่อเราจัดเอา Function และ/หรือ โค้ดส่วนอื่นๆที่สามารถใช้ร่วมกันได้ระหว่างหลาย
+Project มาจัดใส่ Package ต่างๆแล้ว เราก็ต้องมาคิดต่อว่าจะต้องทำอย่างไร Sbcl จึงจะรู้%
+ว่าไฟล์ Package ต่างๆอยู่ที่ไหน ซึ่งนี่จะเป็นหน้าที่ของ ASDF
 
-เมื่อเราจัดเอา Source Code ชุดต่างๆใส่เข้าไปแต่ละ Package แล้ว
-เราก็ต้องมาคิดต่อว่าจะทำอย่างไรให้ Project อื่นๆ 
+ASDF คือเครื่องมือที่จะบอก Sbcl ว่าไฟล์ต่างๆอยู่ตรงไหน
+
+System หนึ่งๆจะประกอบไปด้วย Package หลายๆอัน โดยจะใช้ ASDF เป็นเครื่องมือในการ%
+กำหนดว่าไฟล์ต่างๆของ Package ทั้งหลายน้้นอยู่ตรงไหน
+
+% TODO
 
 \section{การติดตั้งระบบเพื่อเริ่มเขียนโปรแกรมด้วยภาษา Common Lisp}
 
