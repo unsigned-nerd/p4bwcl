@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+
+% {{{ [begin] thai language support
+% http://thaitug.daytag.org/wordpress/?p=1947
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\usepackage[Latin,Thai]{ucharclasses}
+\defaultfontfeatures{Mapping=tex-text} 
+\setdefaultlanguage{thai}
+\setotherlanguage{english}
+\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{Norasi:script=thai}
+%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{TlwgTypewriter:script=thai}
+%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{TlwgTypewriter}
+% if omitting script=thai, then we don't have to use ItalicFont,
+% BoldFont, BoldItalicFont options
+%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-tex,ItalicFont={TlwgTypewriter-Oblique},BoldFont={TlwgTypewriter-Bold},BoldItalicFont={TlwgTypewriter-BoldOblique}]{TlwgTypewriter:script=thai}
+%\newfontfamily{\thaifont}[Scale=MatchUppercase,Mapping=tex-text]{Purisa:script=thai}
+\setTransitionTo{Thai}{\thaifont}
+\setTransitionFrom{Thai}{\normalfont}
+\XeTeXlinebreaklocale “th_TH” 
+\XeTeXlinebreakskip = 0pt plus 1pt
+\linespread{1.5}
+% }}} [end] thai language support
+
+\usepackage{hyperref}
+\usepackage{fancybox}
+
+\begin{document}
+
+\title{Programming For Beginners With Common~Lisp}
+\author{unsigned\_nerd}
+\maketitle
+
+\tableofcontents
+
+\section{Prerequisite - การเริ่มต้น}
+
+การเขียนโปรแกรม คือ การเขียนชุดคำสั่ง เพื่อสั่งให้คอมพิวเตอร์ทำงานตามที่เรากำหนด
+
+เราเขียนชุดคำสั่งด้วย Programming Language
+
+โดยทั่วไปหากเราพูดถึง Programming Language เราจะหมายถึงภาษาแบบ High-Level เช่น
+Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
+แต่ไม่ได้หมายถึงภาษา Assembly
+
+ภาษา Common Lisp เป็นภาษาที่ปัจจุบันไม่ได้รับความนิยมมากนัก
+
+สามารถดูการจัดอันดับภาษาคอมฯที่ได้รับความนิยมล่าสุดได้ที่นี่: \href{http://pypl.github.io/PYPL.html}{http://pypl.github.io/PYPL.html}
+
+อันดับหนึ่งคือภาษา Python
+
+ส่วนภาษา Common Lisp ไม่ติดอันดับบน PYPL เลย
+
+ทาง PYPL แนะนำว่าถ้าหากอยากทราบความนิยมของภาษาที่ไม่ติดอันดับให้ใช้ Google Trends ดู
+
+เมื่อลองใช้ Google Trends เปรียบเทียบความนิยมระหว่าง 3 ภาษา ได้แก่ Python, PHP
+และ Common Lisp เราจะพบว่ากระแสความนิยมในภาษา Common Lisp นั้นต่ำมาก
+ดังจะเห็นได้จากภาพประกอบด้านล่าง
+
+
+อย่างไรก็ตาม แม้ว่า Common Lisp จะไม่ได้รับความนิยมในปัจจุบัน
+แต่ก็ไม่ได้หมายความว่ามันจะไม่เหมาะกับการใช้เป็นเครื่องมือในการเรียนรู้การเขียนโปรแกรม%
+สำหรับมือใหม่
+
+เมื่อท่านได้เรียนรู้การเขียนโปรแกรมด้วยภาษา Common Lisp แล้ว ท่านจะสามารถเรียนภาษา%
+คอมฯอื่นๆเพิ่มเติมได้ง่ายขึ้นมาก
+
+เป็นที่ยอมรับกันโดยทั่วไปว่าในชีวิตหนึ่งๆของคนเรา เราย่อมต้องเรียนภาษาคอมพิวเตอร์หลายภาษา
+แล้วทำไมไม่ลองเริ่มด้วยภาษา Common Lisp กันเล่า!
+
+\shadowbox{\begin{minipage}{0.9\linewidth}
+{\Large รู้หรือไม่?}
+ภาษา Logo (เจ้าเต่าน้อย Logo) ที่หลายๆท่านอาจได้เคยเรียนในสมัยเด็กๆเป็น
+Dialect หนึ่งของภาษา Lisp นี่ก็ยิ่งชี้ให้เห็นว่า Common Lisp
+เหมาะกับการเป็นภาษาเขียนโปรแกรมแรกๆของทุกท่านขนาดไหน
+\end{minipage}}
+
+\end{document}
