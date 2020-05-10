@@ -16,10 +16,11 @@
 \linespread{1.5}
 % }}} [end] thai language support
 
-\usepackage[hidelinks]{hyperref}
-\usepackage{fancybox}
-\usepackage{p4bwcl}
+\usepackage[hidelinks]{hyperref} % external URL clickable link without
+                                 % visible box around the link
+\usepackage{fancybox} % "Do you know?" box
 
+% print file path
 \usepackage{url}
 \renewcommand\UrlFont{\thaifont\itshape}
 
@@ -52,6 +53,8 @@
 % }}}
 
 \usepackage{xcolor,graphicx}
+
+\usepackage{p4bwcl} % my package
 
 \begin{document}
 
@@ -114,11 +117,11 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 สำหรับมือใหม่ ให้ลองทำตามนี้ก่อน จะได้ไม่สับสน แล้วเมื่อเชี่ยวชาญแล้วค่อยปรับแต่งตามใจชอบ
 
 เวลาเราจะเปิด Project ใหม่ สมมุติว่าชื่อ hello-world ให้เราไปที่ Directory ชื่อ
-\url{~/common-lisp/} แล้วสร้าง directory ชื่อ \url{hello-world/} ขึ้นมา
+\path{~/common-lisp/} แล้วสร้าง directory ชื่อ \path{hello-world/} ขึ้นมา
 ซึ่งจะเป็นที่ๆเราจะใส่ Source Code ของเราในนั้น
 
 ต่อมาเรามี Project ใหม่ สมมุติว่าชื่อ goodbye-universe เราก็สร้าง Directory ชื่อ
-\url{~/common-lisp/goodbye-universe/} แล้วใส่ Source Code ของ Project
+\path{~/common-lisp/goodbye-universe/} แล้วใส่ Source Code ของ Project
 นี้ไปในนั้น
 
 สมมุติว่าเรามี Function ใน Project ชื่อ hello-world ที่สามารถนำมาใช้ใน Project ชื่อ
