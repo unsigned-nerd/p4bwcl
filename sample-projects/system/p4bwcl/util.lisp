@@ -1,8 +1,5 @@
 (defpackage :util
-  (:use :common-lisp :un-utils.simple-syntax)
-  (:export #:yo))
+  (:use :common-lisp :un-utils.simple-syntax))
+  ;(:export #:collect-list))
 
 (in-package :util)
-
-(defun yo ()
-  (in 'x '+ '- '*))
