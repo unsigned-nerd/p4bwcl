@@ -10,4 +10,4 @@
 ; }}}
 
 (for-each-$line-in *standard-input*
-  (format t "Common Lisp is fun?  ~A~%" $line))
+  (print-line "Common Lisp is fun?  ~A" $line))

@@ -5,5 +5,3 @@
 สำหรับท่านที่เร่งรีบ สามารถดาวน์โหลดไฟล์หนังสือในรูปแบบ PDF ได้เลยที่ลิงค์ด้านล่างนี้
 
 [https://github.com/unsigned-nerd/p4bwcl/.../p4bwcl.pdf](https://github.com/unsigned-nerd/p4bwcl/blob/master/book/latex/src/p4bwcl.pdf)
-
-

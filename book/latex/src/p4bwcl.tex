@@ -1,6 +1,6 @@
 \documentclass[a4paper]{article}
 
-% {{{ [begin] thai language support
+% {{{ thai language support
 % http://thaitug.daytag.org/wordpress/?p=1947
 \usepackage{fontspec}
 \usepackage{polyglossia}
@@ -14,48 +14,40 @@
 \XeTeXlinebreaklocale “th_TH” 
 \XeTeXlinebreakskip = 0pt plus 1pt
 \linespread{1.5}
-% }}} [end] thai language support
+% }}} end: thai language support
 
-\usepackage[hidelinks]{hyperref} % external URL clickable link without
-                                 % visible box around the link
-\usepackage{fancybox} % "Do you know?" box
+% remove visible box around the external URL
+\usepackage[hidelinks]{hyperref}
+
+% use fancybox to create the "Do you know?" box
+\usepackage{fancybox}
 
 % file path formatting
 \usepackage{url}
 \renewcommand\UrlFont{\thaifont\itshape}
 
-% source code formatting
+% {{{ source code formatting
 \usepackage{listings}
-% {{{
 \usepackage{color}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
-\lstset{frame=tb,
-  language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-
+\lstset{frame=tb, language=Java, aboveskip=3mm, belowskip=3mm,
+  showstringspaces=false, columns=flexible, basicstyle={\small},
+  numbers=none, numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue}, commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve}, breaklines=true, breakatwhitespace=true,
+  tabsize=3}
 \lstset{numbers=left,numberstyle=\tiny,numbersep=5pt,language=Lisp,
   stringstyle=\small,basicstyle=\footnotesize,
   showstringspaces=false,breaklines}
-% }}}
+% }}} end: source code formatting
 
+% add ability to include pictures into the book
 \usepackage{xcolor,graphicx}
 
-\usepackage{p4bwcl} % my package
+% my package
+\usepackage{p4bwcl}
 
 \begin{document}
 
@@ -65,7 +57,7 @@
 
 \tableofcontents
 
-\section{การเริ่มต้น}
+\section{จุดเด่นของ Common Lisp คือความกระชับ}
 
 การเขียนโปรแกรม คือ การเขียนชุดคำสั่งเพื่อสั่งให้คอมพิวเตอร์ทำงานตามที่เรากำหนด
 
@@ -76,59 +68,67 @@ Common Lisp, Python, Java, PHP, Perl, C, JavaScript เป็นต้น
 แต่ไม่ได้หมายถึงภาษา Assembly\footnote{ภาษา Assembly เป็น Low-Level
 Programming Language}
 
+แต่ละภาษาฯจะมีจุดเด่นที่แตกต่างกัน
+
 ภาษา Common Lisp เป็นภาษาที่ปัจจุบันไม่ได้รับความนิยมเลยทั้งๆที่มี Feature ต่างๆมากมาย 
 โดยเฉพาะอย่างยิ่ง Macro ใน Common Lisp ที่ทำให้เราสามารถเพิ่ม Syntax ต่างๆที่%
-ต้องการเองได้ ทำให้เราสามารถเขียนโค้ดที่มีความกระชับและสั้นได้ง่าย\footnote{การเขียนโค้ด
-หากเขียนได้ยิ่งสั้นก็ถือว่ายิ่งดี โค้ดที่สั้นย่อมมีโอกาสเกิด Bug ได้น้อยกว่าโค้ดที่ยาว
-อีกทั้งยังสามารถอ่านได้เข้าใจได้ง่ายกว่าอีกด้วย ท่านคงเคยได้ยินคำกล่าวที่ว่า การเขียน
-Function ใดๆ ไม่ควรเขียนให้มีความยาวเกินความสูงของหน้าจอคอมฯของท่าน} ตัวอย่างเช่น
-หากเราต้องการเขียนโปรแกรมที่ทำการอ่านข้อมูลแบบ Plain Text จาก Standard Input
-แล้วทำการใส่ Prefix String "Common Lisp is fun?: " นำหน้าทุกบรรทัด
+ต้องการเองได้ ทำให้เราสามารถเขียนโค้ดที่มีความกระชับและสั้นได้ง่าย\footnote{การเขียน%
+โค้ดหากเขียนได้ยิ่งสั้นก็ถือว่ายิ่งดี โค้ดที่สั้นย่อมมีโอกาสเกิด Bug ได้น้อยกว่าโค้ดที่ยาว
+อีกทั้งยังสามารถอ่านให้เข้าใจได้ง่ายกว่าอีกด้วย ท่านคงเคยได้ยินคำกล่าวที่ว่า การเขียน
+Function ใดๆ ไม่ควรเขียนให้มีความยาวเกินความสูงของหน้าจอคอมฯของท่าน เพราะเมื่อมัน%
+ยาวเกินไป สมองคนเราจะจำไม่ค่อยไหว} ตัวอย่างเช่น หากเราต้องการเขียนโปรแกรมที่ทำการ%
+อ่านข้อมูลแบบ Plain Text จาก Standard Input
+แล้วทำการใส่ Prefix String ``Common Lisp is fun?: " นำหน้าทุกบรรทัด
 ก่อนที่จะพิมพ์ข้อมูลในแต่ละบรรทัดออกไปยัง Standard Output โดยปกติเราอาจเขียนโค้ดดังนี้:
 
-\lstset{language=Lisp}
-\begin{lstlisting}
+\begin{lstlisting}[caption=โค้ดแบบปกติ\label{lst:regular-print-each-line-code}]
 (let (line)
   (loop for line = (read-line *standard-input* nil 'eof)
     until (eq line 'eof)
     do
-      (format t "Common Lisp is fun?  ~A~%" line)))
+      (format t ``Common Lisp is fun?  ~A~%" line)))
 \end{lstlisting}
 
-ซึ่งจะเห็นได้ว่ามันดูเข้าใจยากและรายละเอียดเยอะไปหมด ทั้ง loop, until, do, 'eof และ
-nil แต่หากเราเขียน Macro ดังนี้:
+จะเห็นได้ว่ามันดูเข้าใจยากและมีรายละเอียดเยอะไปหมด ทั้ง loop, until, do, 'eof และ
+nil แต่หากสมมุติว่าเราเขียน Macro ใน Common Lisp เป็น แล้วเราเขียน Macro ดังนี้:
 
-\lstset{language=Lisp}
-\begin{lstlisting}
-(defmacro for-each-$line-in (in-stream &rest body)
+\begin{lstlisting}[caption=Macro for-each-\$line-in \& print-line]
+(defmacro for-each-$line-in (in-stream &rest body
   (let (($line (intern (symbol-name '$line))))
     `(let (,$line)
        (loop for ,$line = (read-line ,in-stream nil 'eof)
          until (eq ,$line 'eof)
          do
            ,@body))))
+
+(defmacro print-line (formatted-string &rest args)
+  `(format t ,(concatenate 'string formatted-string ``~%") ,@args))
 \end{lstlisting}
 
-ซึ่งจะเห็นได้ว่าเป็นเพียงการลอกโค้ดที่เราเขียนไว้ก่อนหน้ามาสร้างเป็น Macro\footnote{ซึ่ง%
-อ่านเข้าใจยากกว่าเก่า แต่โดยปกติ Macro จะอยู่ในลักษณะของ Package ให้เราเรียกใช้
-เราจึงไม่ต้องอ่านโค้ดที่ซับซ้อนเหล่านี้เวลาใช้งาน} จะทำให้เรา%
-สามารถเขียนโค้ดใหม่ได้ดังนี้:
+จะทำให้เราสามารถเขียนโค้ดใหม่ได้ดังนี้:
 
-\lstset{language=Lisp}
-\begin{lstlisting}
+\begin{lstlisting}[caption=โค้ดที่อ่านง่าย สบายตา ด้วยการใช้ Macro]
 (for-each-$line-in *standard-input*
-  (format t "Common Lisp is fun?  ~A~%" $line))
+  (print-line ``Common Lisp is fun?  ~A" $line))
 \end{lstlisting}
 
-ซึ่งสั้นกว่าเดิมมาก
+ซึ่งสั้นกว่าเดิมมาก และอ่านเข้าใจได้ง่าย
 
-ท่านผู้อ่านที่ยังไม่รู้ว่า Macro คืออะไรอาจจะเห็นโค้ดนี้แล้วเห็นว่าสามารถใช้การเขียน Function 
-ทำได้เหมือนกัน ซึ่งหากลองเพ่งดูดีๆจะพบว่าไม่สามารถทำได้ โดยมีจุดที่น่าสังเกตดังนี้
+ท่านผู้อ่านที่ยังไม่ทราบว่า Macro คืออะไรอาจจะเห็นโค้ดนี้แล้วเห็นว่าสามารถใช้การเขียน
+Function ทำได้เหมือนกัน ซึ่งหากลองเพ่งดูดีๆจะพบว่าไม่สามารถทำได้ โดยมีจุดที่น่าสังเกตดังนี้
 
 \begin{enumerate}
-  \item a
-  \item b
+  \item มีการสร้างตัวแปรชื่อ \$line ขึ้นมาจาก Macro ชื่อ for-each-\$line-in โดยโค้ด%
+    ที่เรียก Macro นี้สามารถนำตัวแปร \$line ไปใช้ต่อภายใน Loop ได้ด้วย,
+    เราไม่สามารถทำสิ่งนี้ได้ด้วย Function, สิ่งนี้ ศัพท์เทคนิคเรียกว่า Anaphoric Macro
+    และ Intentional Variable Capture
+  \item จะเห็นได้ว่า Definition ของ Macro for-each-\$line-in
+    เป็นการลอกโค้ดแบบปกติใน Listing \ref{lst:regular-print-each-line-code} มาตรงๆ
+    ซึ่งเป็นเรื่องที่ดีมาก เป็นการแสดงให้เห็นว่าการเขียน Macro เพื่อทำให้โค้ดกระชับแบบนี้เป็นเรื่องง่าย
+    เมื่อเราเห็นโค้ดตรงไหนอ่านยาก ไม่อยากอ่าน เราก็ย้ายมันไปอยู่ใน Macro ได้เลย
 \end{enumerate}
+
+
 
 สามารถดูการจัดอันดับภาษาคอมฯที่ได้รับความนิยมล่าสุดได้ที่นี่: \href{http://pypl.github.io/PYPL.html}{http://pypl.github.io/PYPL.html}
 
